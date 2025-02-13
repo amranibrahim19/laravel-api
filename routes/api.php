@@ -29,7 +29,8 @@ Route::post('/auth/register', [AuthController::class, 'register'])->name('regist
 // categories
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
 
-Route::resource('tasks', TaskController::class);
+Route::resource('tasks', TaskController::class)->except('update');
+Route::post('/tasks/{id}', [TaskController::class, 'update'])->name('tasks.update');
 
 Route::resource('expenses', ExpensesController::class);
 
